@@ -10,6 +10,7 @@ app.use(methodOverride());
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.text());
 app.use(bodyparser.json());
+require("./controllers/users")(app)
 db.sequelize.sync({force:false}).then(()=>{
     const PORT = process.env.port || 4000
     app.listen(PORT,(
@@ -19,3 +20,4 @@ db.sequelize.sync({force:false}).then(()=>{
     console.log(err)
 })
 
+ 
